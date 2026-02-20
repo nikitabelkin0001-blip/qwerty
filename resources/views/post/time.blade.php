@@ -1,0 +1,17 @@
+<x-error>
+    @if(@isset($year))
+    {{$year}}
+    @else
+    {{date('Y')}}
+    @endif
+    @if(@isset($month))
+    {{$month}}
+    @else
+    {{date('m')}}
+    @endif
+    @if(@isset($day))
+    {{$day}}
+    @else
+    {{date('d')}}
+    @endif
+</x-error>
