@@ -1,10 +1,9 @@
 <x-error>
+    @if (isset($mass) && count($mass)>0)
     @foreach ($mass as $mass2)
-    @if (empty($mass))
     {{ $mass2 }}<br/>
+    @endforeach
     @else
     В массиве нет элементов.
-    @break
     @endif
-    @endforeach
 </x-error>

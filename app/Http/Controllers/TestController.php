@@ -164,12 +164,16 @@ class TestController
     }
     public function Name()
     {
-        $mass = [
-            'Petya',
-            'Kirill',
-            'Aktan',
-            'Igor'
-        ];
+        $mass = [];
         return view('post.name', ['mass' => $mass]);
+    }
+
+    public function Str30(){
+        $mass=[
+            'asdasd',
+            'aqweqw',
+            'oiopip'
+        ];
+        return view('post.str30', ['mass'=>$mass]);
     }
 }
