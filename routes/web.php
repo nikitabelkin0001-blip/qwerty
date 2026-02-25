@@ -154,3 +154,7 @@ Route::get('Mass4', [TestController::class, 'Mass4']);
 Route::get('Empoyes', [TestController::class, 'Empoyes']);
 Route::get('NameN', [TestController::class, 'Name']);
 Route::get('Str30', [TestController::class, 'Str30']);
+Route::get("Mass5", [TestController::class, 'Mass5']);
+Route::get('Mass6', [TestController::class, 'Mass6']);
+Route::get('Mass7', [TestController::class, 'Mass7']);
+Route::get('Mass8', [TestController::class, 'Mass8']);

@@ -176,4 +176,25 @@ class TestController
         ];
         return view('post.str30', ['mass'=>$mass]);
     }
+
+    public function Mass5(){
+        $mass = [1,2,3,4,5,6];
+        return view('post.mass5', ['mass'=>$mass]);
+    }
+
+    public function Mass6(){
+        $mass = [1,2,3,4,0,6];
+        return view('post.mass6', ['mass' => $mass]);
+    }
+
+    public function Mass7()
+    {
+        $mass = [1,2,3,0,5,6];
+        return view('post.mass7', ['mass' => $mass]);
+    }
+
+    public function Mass8(){
+        $mass = [1,2,3,4,5,6,7,8,9,10];
+        return view('post.mass8',['mass'=>$mass]);
+    }
 }
