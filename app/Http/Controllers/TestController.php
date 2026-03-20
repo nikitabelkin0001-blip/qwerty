@@ -149,6 +149,68 @@ class TestController
     {
         $collection = collect(['name' => 'taylor', 'framework' => 'laravel']);
         $value = $collection->get('name');
-        return view('post.test15', ['value'=>$value]);          #Выводит только элемент, ключ которого указан в "get".
+        return view('post.test15', ['value' => $value]);          #Выводит только элемент, ключ которого указан в "get".
+    }
+
+    public function Test16()
+    {
+        $collection = collect([
+            ['account_id' => 'account-x10', 'product' => 'Chair'],
+            ['account_id' => 'account-x10', 'product' => 'Bookcase'],
+            ['account_id' => 'account-x11', 'product' => 'Desk'],        #Группирует элементы по указанному ("account_id") ключу
+        ]);
+        $grouped = $collection->groupBy('account_id');
+        $grouped->all();
+        return view('post.test16', ['grouped' => $grouped]);
+    }
+    public function Test16a()
+    {
+        $collection = collect([
+            ['account_id' => 'account-x10', 'product' => 'Chair'],
+            ['account_id' => 'account-x10', 'product' => 'Bookcase'],
+            ['account_id' => 'account-x11', 'product' => 'Desk'],      #Выводит замыкание
+        ]);
+        $grouped = $collection->groupBy(function ($item, $key) {
+            return substr($item['account_id'], -3);
+        });
+        $grouped->all();
+        return view('post.test16a', ['grouped' => $grouped]);
+    }
+    public function Test17()
+    {
+        $arr = collect([1, 2, 3, 4])->every(function ($value, $key) {
+            return $value > 2;    #Проверяет компонетны все коллекции (value > 2) 
+        });
+        dd($arr);
+    }
+    public function Test18()
+    {
+        $collection = collect(['account_id' => 1, 'product' => 'Desk', 'amount' => 5]);
+        dd($collection->has('product')); #Проверяет есть ли ключ ("product") в коллекции.
+        // dd($collection->has(['product', 'amount']));   Если указанно несколько ключей, то в коллекции должен быть каждый из них.
+        // dd($collection->has(['amount', 'price'])); Можно и так!
+    }
+
+    public function Test19()
+    {
+        $collection = collect(['account_id' => 1, 'product' => 'Desk', 'amount' => 5]);
+        dd($collection->hasAny(['product', 'price']));                      #Проверяет есть ли в коллекции хоть какой-нибудь ключ из вписанных ($collection->hasAny(['product', 'price']);).
+        // $collection->hasAny(['name', 'price']);   
+    }
+
+    public function Test20()
+    {
+        $collection = collect([
+            ['account_id' => 1, 'product' => 'Desk'],
+            ['account_id' => 'price', 'product' => 'Chair'],   #Объеденяет коллекции
+        ]);
+        dd($collection->implode('product', ', '));
+    }
+    public function Test21()
+    {
+        $collection = collect(['Desk', 'Sofa', 'Chair']);
+        $intersect = $collection->intersect(['Desk', 'Chair', 'Bookcase']);
+        $intersect->all();
+        return view('post.test21', ['intersect', $intersect]);
     }
 }
