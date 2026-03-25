@@ -12,18 +12,25 @@ return new class extends Migration
    public function up()
 	{
 		Schema::table('posts', function (Blueprint $table) {
-			$table->string('title',100);
-			$table->text('desc');
-            $table->dropColumn('text');
+			$table->string('title',100)->unsigned();       #Безнаковость        
+			$table->text('desc')->comment('my comment');    #Клмментарий
+            $table->renameColumn('desc', 'text2');
+            $table->string('desc')->nullable();   #Обнуляемое поле      Можно добавит модификатор при изменении поля, дописать ->change()
+            $table->string('desc2')->default('nnn');    #Значение по умолчанию
 		});
 	}
-
+// ->first()   Помещает поле первым в таблице
+// ->after('id')    Помещает поле после указанного поля (id)
+// 
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
+        // Schema::drop('post');    #удаление таблицы
+        // Schema::dropIfExists('posts');     Проверка существования таблицы
+        // Schema::rename('posts', 'articles');     Переименнование таблицы
         
     }
 };
