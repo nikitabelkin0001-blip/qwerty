@@ -13,7 +13,7 @@ return new class extends Migration
 	{
 		Schema::table('posts', function (Blueprint $table) {
 			$table->string('title',100)->unsigned();       #Безнаковость        
-			$table->text('desc')->comment('my comment');    #Клмментарий
+			$table->text('desc')->comment('my comment');    #Комментарий
             $table->renameColumn('desc', 'text2');
             $table->string('desc')->nullable();   #Обнуляемое поле      Можно добавит модификатор при изменении поля, дописать ->change()
             $table->string('desc2')->default('nnn');    #Значение по умолчанию
