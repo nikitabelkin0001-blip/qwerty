@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user', function (Blueprint $table){
-            $table->increments('id');
-            $table->text('LastName');
-            $table->date('DateOfBirth');
-            $table->date('RegistrationDate');
-        });
+        Schema::create('post', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('slug');
+            $table->integer('likes');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
+    });
     }
 
     /**
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExist('user');
+         Schema::dropIfExists('post');
     }
 };
