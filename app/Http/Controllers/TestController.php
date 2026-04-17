@@ -121,12 +121,35 @@ class TestController extends Controller
 	// 	->get();
 	// dump($posts);
 
-    
+    // DB::table('posts')->insert([
+	// 	'title' => 'page',              Вставка данных в таблицу.
+	// 	'slug'  => 'slug',
+	// ]);
+
+    // $id = DB::table('posts')->insertGetId([
+	// 	'title' => 'page',
+	// 	'slug'  => 'slug',                  получение id вставленной записи.
+	// ]);
+	// echo $id;
+
+
 
 
     public function Test()
     {
-        $posts = DB::table("post")->get();
-        return view("post.test", ['posts' => $posts]);
+        $users = DB::table('users')->get();
+        dd($users);
+    }
+
+    public function Test2(){
+        $post = DB::table('post')->get();
+        foreach($post as $p){
+            dump($p);
+        }
+    }
+
+    public function Test3(){
+        $post = DB::table('post')->get();
+        return view('post.test3', ['post'=>$post]);
     }
 }
