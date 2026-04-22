@@ -3,12 +3,14 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Database\Seeders\DatabaseSeede;
 use Database\Seeders\postSeeder;
 use Database\Seeders\testComplete;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,14 +28,9 @@ class DatabaseSeeder extends Seeder
         //         'email' => 'test@example.com',
         //     ]);
         $this->call([
+            DatabaseSeede::class,
             postSeeder::class,
             testComplete::class,
-        ]);
-        DB::table("users")->insert([
-            "name" => "Nikita",
-            "age" => 19,
-            "email" => "asdasd@gmail.com",
-            "password" => Hash::make('12345'),
         ]);
     }
 }

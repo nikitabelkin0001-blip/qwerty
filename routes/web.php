@@ -20,3 +20,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('Test', [TestController::class, 'Test']);
 Route::get('Test2', [TestController::class, 'Test2']);
 Route::get('Test3', [TestController::class, 'Test3']);
+Route::get('Test4', [TestController::class, 'Test4']);
+Route::get('Test6', [TestController::class, 'Test6']);
