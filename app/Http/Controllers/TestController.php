@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;    #Подключение фасада DB
-
+use PDO;
 
 class TestController extends Controller
 {
@@ -85,9 +85,9 @@ class TestController extends Controller
 	// dump($post);
 
 	//    $post = DB::table('posts')
-// 		->whereIdOrSlug(1, 'my-page')               Комбинированное динамическое условие. Через "Or" (или)
-// 		->first();
-// 	dump($post);
+	// 		->whereIdOrSlug(1, 'my-page')               Комбинированное динамическое условие. Через "Or" (или)
+	// 		->first();
+	// 	dump($post);
 
 
 	// $posts = DB::table('posts')
@@ -152,7 +152,7 @@ class TestController extends Controller
 	public function Test3()
 	{
 		$post = DB::table('post')->get();
-		return view('post.test3', ['post'=>$post]);
+		return view('post.test3', ['post' => $post]);
 	}
 
 	public function Test4()
@@ -160,15 +160,149 @@ class TestController extends Controller
 		DB::enableQueryLog();
 		$post = DB::table('post')->where('id', '!=', 3)->get();
 		dump(DB::getQueryLog());
-		return view('post.test4', ['post'=>$post]);
+		return view('post.test4', ['post' => $post]);
 	}
 
-	public function Test6(){
+	public function Test6()
+	{
 		$post = DB::table('user')->select('name', 'email as users_email')->get();
 		dump($post);
 	}
 
-	public function Test7(){
-		
+	public function Test8()
+	{
+		$post = DB::table('user')->where('age', '=', 30)->get();
+		dump($post);
+	}
+
+	public function Test9()
+	{
+		$post = DB::table('user')->where('age', '!=', 30)->get();
+		dump($post);
+	}
+
+	public function Test10()
+	{
+		$post = DB::table('user')->where('age', '>', 30)->get();
+		dump($post);
+	}
+
+	public function Test11()
+	{
+		$post = DB::table('user')->where('age', '<', 30)->get();
+		dump($post);
+	}
+
+	public function Test12()
+	{
+		$post = DB::table('user')->where('age', '<=', 30)->get();
+		dump($post);
+	}
+
+	public function Test13()
+	{
+		$post = DB::table('user')->whereBetween('age', [20, 30])->get();
+		dump($post);
+	}
+
+	public function Test14()
+	{
+		$post = DB::table('user')->where('age', '=', 30)->orWhere('id', '>', 4)->get();
+		dump($post);
+	}
+
+	public function Test15()
+	{
+		$post = DB::table('user')->where('age', '=', 30)->orWhere('id', '>', 4)->orWhere('salary', '=', 500)->get();
+		dump($post);
+	}
+
+	public function Test16()
+	{
+		$post = DB::table('user')->whereBetween('age', [20, 30])->orWhere('salary', '=', 500)->get();
+		dump($post);
+	}
+
+	public function Test17()
+	{
+		$post = DB::table('user')->whereBetween('age', [20, 30])->orWhereBetween('salary', [400, 800])->get();
+		dump($post);
+	}
+
+	public function Test18()
+	{
+		$post = DB::table('user')->where('id', '=', 2)->get();
+		dump($post);
+	}
+
+	public function Test19()
+	{
+		$post = DB::table('user')->where('id', '=', 2)->get();
+		return view('post.test19', ['post' => $post]);
+	}
+
+	public function Test20()
+	{
+		$post = DB::table('user')->where('id', '=', 2)->select('email')->get();
+		dump($post);
+	}
+
+	public function Test21()
+	{
+		$post = DB::table('user')->where('id', '=', 2)->select('email')->get();
+		return view('post.test21', ['post' => $post]);
+	}
+
+	public function Test22()
+	{
+		$post = DB::table('user')->pluck('name');
+		dump($post);
+	}
+
+	public function Test23()
+	{
+		$post = DB::table('user')->pluck('name');
+		return view('post.test23', ['post' => $post]);
+	}
+
+	public function Test24()
+	{
+		$post = DB::table('user')->whereBetween('age', [30, 40])->get();
+		dump($post);
+	}
+
+	public function Test25()
+	{
+		$post = DB::table('user')->whereNotBetween('age', [30, 40])->get();
+		dump($post);
+	}
+
+	public function Test26()
+	{
+		$post = DB::table('user')->whereBetween('id', [1, 5])->get();
+		dump($post);
+	}
+
+	public function Test27()
+	{
+		$post = DB::table('user')->whereNotBetween('id', [1, 5])->get();
+		dump($post);
+	}
+
+	public function Test28()
+	{
+		$post = DB::table('user')->where('id', 1)->get();
+		dump($post);
+	}
+
+	public function Test29()
+	{
+		$post = DB::table('user')->whereName('Nikita')->get();
+		dump($post);
+	}
+
+	public function Test30(){
+		$post = DB::table('user')->whereEmail('asdasd@gmail.com')->get();
+		dump($post);
 	}
 }

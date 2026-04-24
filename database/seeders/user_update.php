@@ -21,21 +21,21 @@ class user_update extends Seeder
                 'age'=>30,
                 'email'=>Str::random(10).'@gmail.com',
                 'salary'=>500,
-                'password'=>Hash::make(rand(5)),
+                'password'=>Hash::make(1212),
             ],
             [
                 'name'=>'Alex',
                 'age'=>23,
                 'email'=>Str::random(10).'@gmail.com',
                 'salary'=>700,
-                'password'=>Hash::make(rand(5)),
+                'password'=>Hash::make(1111),
             ],
             [
                 'name'=>'Kiriill',
                 'age'=>35,
                 'email'=>Str::random(10).'@gmail.com',
                 'salary'=>100,
-                'password'=>Hash::make(rand(5)),
+                'password'=>Hash::make(2323),
             ]
         ]);
     }
