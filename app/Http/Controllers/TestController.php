@@ -301,8 +301,59 @@ class TestController extends Controller
 		dump($post);
 	}
 
-	public function Test30(){
+	public function Test30()
+	{
 		$post = DB::table('user')->whereEmail('asdasd@gmail.com')->get();
 		dump($post);
+	}
+
+	public function Test31()
+	{
+		$post = DB::table('user')->whereIdAndAge(2, 19)->get();
+		dump($post);
+	}
+
+	public function Test32()
+	{
+		$post = DB::table('user')->whereIdOrAge(2, 30)->get();
+		dump($post);
+	}
+
+	public function Test33()
+	{
+		$post = DB::table('user')->select('name', 'age')->orderBy('age')->get();
+		dump($post);
+	}
+
+	public function Test34()
+	{
+		$post = DB::table('user')->select('name', 'salary')->orderByDesc('salary')->get();
+		dump($post);
+	}
+
+	public function Test37()
+	{
+		$post = DB::table('user')->select('name', 'salary', 'age')->where('age', '>=', 30)->orderBy('salary')->get();
+		dump($post);
+	}
+
+	public function Test38()
+	{
+		$post = DB::table('user')->select('name', 'salary', 'age')->where('age', '>=', 30)->orderByDesc('salary')->get();
+		dump($post);
+	}
+
+	public function Test40(){
+		$post = DB::table('user')->inRandomOrder()->get();
+		dump($post);
+	}
+
+	public function Test41(){
+		$post = DB::table('user')->inRandomOrder()->first();
+		dump($post);
+	}
+
+	public function Test42(){
+		$post1 = DB::table('user')->whereBetween(age[20,30])->inRandomOrder()->get();
 	}
 }
