@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Fruitcake\LaravelDebugbar\Twig\Extension\Dump;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;    #Подключение фасада DB
 use PDO;
@@ -354,6 +355,50 @@ class TestController extends Controller
 	}
 
 	public function Test42(){
-		$post1 = DB::table('user')->whereBetween(age[20,30])->inRandomOrder()->get();
+		$post1 = DB::table('user')->whereBetween('age', [20,30])->inRandomOrder()->get();
+		$post2 = DB::table('user')->whereBetween('age', [20,30])->inRandomOrder()->first();
+		dump($post1);
+		dump($post2);
+	}
+
+	public function Test43(){
+		$post = DB::table('user')->take(3)->get();
+		dump($post);
+	}
+
+	public function Test44(){
+		$post = DB::table('user')->whereAge(30)->take(3)->get();
+		dump($post);
+	}
+
+	public function Test45(){
+		$post = DB::table('user')->where('id', '>', 5)->take(10)->get();
+		dump($post);
+	}
+
+	public function Test46(){
+		$post = DB::table('user')->whereAge(30)->skip(2)->take(10)->get();
+		dump($post);
+	}
+
+	public function Test47(){
+		#вставление одного юзера в таблицу "user".
+	}
+
+	public function Test48(){
+		$post = DB::table('user')->whereName('Albert')->get();
+		dump($post);
+	}
+
+	public function Test49(){
+		#Вставление трех новых юзеров в таблицу "user".
+	}
+
+	public function Test50(){
+		#Изменение id юзера с 2 на 5.
+	}
+
+	public function Test51(){
+		#Изменение зарплат юзеров с возростом 30
 	}
 }
