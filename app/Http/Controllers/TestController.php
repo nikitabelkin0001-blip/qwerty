@@ -401,4 +401,23 @@ class TestController extends Controller
 	public function Test51(){
 		#Изменение зарплат юзеров с возростом 30
 	}
+
+	public function Test52(){
+		DB::table('user')->whereId(7)->increment('age');
+		dd('Выполнено');
+	}
+
+	public function Test53(){
+		DB::table('user')->whereAge(30)->increment('salary', 100);
+		dd("Зарплата увеличина на 100");
+	}
+
+	public function Test54(){
+		DB::table('user')->delete(5);
+		dd("Удален пользователь с id = 5"); 
+	}
+
+	public function Test55(){
+		
+	}
 }

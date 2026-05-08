@@ -31,6 +31,14 @@ class DatabaseSeeder extends Seeder
             DatabaseSeede::class,
             postSeeder::class,
             testComplete::class,
+            completion_table_cities::class,
+            completion_table_users_i::class,
+            user_change_id::class,
+            user_change_salary::class,
+            user_update_3::class,
+            user_update_4::class,
+            user_update::class,
+            userUpdate2::class
         ]);
     }
 }
