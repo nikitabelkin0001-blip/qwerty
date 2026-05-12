@@ -418,6 +418,16 @@ class TestController extends Controller
 	}
 
 	public function Test55(){
-		
+		DB::table('post')->delete();
+		dd("Удалены все юзеры с таблицы (post)");
+	}
+
+	public function Test56(){
+		#Созданы таблицы users и cities.
+	}
+
+	public function Test57(){
+		$post = DB::table('table_users_i')->join('table_cities', 'table_users_i.CityId', '=', 'table_cities.id')->select('table_users_i.name', 'table_cities.city')->get();
+		dump($post);
 	}
 }
