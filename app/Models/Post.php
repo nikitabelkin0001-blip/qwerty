@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    $posts = App\
+    protected $table = 'posts';
+    protected $fillable = [
+        'title', 'desc', 'text', 'date'
+    ];
+    protected $guarded = ['id'];
+    public $timestamps = 'false';
 }

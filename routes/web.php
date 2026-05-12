@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\praktika10;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CityController;
@@ -73,3 +74,5 @@ Route::get('Test54', [TestController::class, 'Test54']);
 Route::get('Test55', [TestController::class, 'Test55']);
 Route::get('Test56', [TestController::class, 'Test56']);
 Route::get('Test57', [TestController::class, 'Test57']);
+
+Route::get('index', [praktika10::class, 'index']);
